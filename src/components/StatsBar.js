@@ -4,13 +4,15 @@ import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 
 
 
-function StatsBar() {
+export default class StatsBar extends React.Component {
+render() {
+    console.log(this.props)
     return (
         <div className="card" >
             <div className="card-body d-flex justify-content-between">
                 <div className="d-flex">
-                    <h2 className="card-title">6</h2>
-                    <h2 className="card-text ml-3">Articles</h2>
+                    <h2 className="card-title">{this.props.number}</h2>
+                    <h2 className="card-text ml-3">{this.props.name}</h2>
 
                 </div>
                 <button className="btn btn-light">
@@ -20,7 +22,6 @@ function StatsBar() {
                 </button>
             </div>
         </div>
-    );
+    );}
 }
 
-export default StatsBar

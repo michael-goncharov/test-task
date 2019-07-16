@@ -1,39 +1,39 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComment, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-function Table() {
-    return (
+export default class Table extends React.Component {
+
+    render () {
+    return(
         <table className="table table-striped">
             <thead className="thead-dark">
             <tr>
-                <th scope="col">Article title</th>
-                <th scope="col">Content</th>
-                <th scope="col">Comments</th>
-                <th scope="col">Actions</th>
+                <th className="w-25" scope="col">Article title</th>
+                <th className="w-50" scope="col">Content</th>
+                <th className="w-auto" scope="col">Comments</th>
+                <th className="w-auto" scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
+            {this.props.posts.map(post =>
+                <tr key={post.id}>
+                    <th scope="row">{post.title}</th>
+                    <td>{post.body}</td>
+                    <td>{post.comments.length}</td>
+                    <td>
+                        <h3>
+                            <a href="#" ><FontAwesomeIcon icon={faComment} /></a>
+                            <span>  </span>
+                            <a href="#" ><FontAwesomeIcon icon={faTimesCircle} /></a>
+                        </h3>
+                    </td>
+                </tr>
+            )}
             </tbody>
         </table>
     );
+    }
 }
 
-export default Table
