@@ -1,12 +1,23 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faComments } from '@fortawesome/free-solid-svg-icons'
 
 
 
 export default class StatsBar extends React.Component {
+
 render() {
-    console.log(this.props)
+    let iconName;
+    console.log(this.props, 'props')
+    switch (this.props.name) {
+        case 'articles':
+            iconName = faAlignLeft;
+            break;
+        case 'comments':
+            iconName = faComments;
+            break;
+    }
     return (
         <div className="card" >
             <div className="card-body d-flex justify-content-between">
@@ -17,7 +28,7 @@ render() {
                 </div>
                 <button className="btn btn-light">
                     <h3>
-                        <FontAwesomeIcon icon={faAlignLeft} />
+                        <FontAwesomeIcon icon={iconName} />
                     </h3>
                 </button>
             </div>

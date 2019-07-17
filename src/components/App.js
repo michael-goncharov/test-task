@@ -17,12 +17,13 @@ export default class App extends React.Component{
     componentDidMount() {
         axios.get(`https://jsonplaceholder.typicode.com/posts`)
             .then(res => {
-                const posts= res.data;
-                posts.map(post => {
+                const postsAll= res.data;
+                postsAll.map(post => {
                     post.comments = []
                 })
+                  const posts = postsAll.slice(0, 5)
                 console.log(posts);
-                this.setState({ posts});
+                this.setState({ posts });
             })
     }
 
