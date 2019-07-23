@@ -5,11 +5,17 @@ import axios from 'axios';
 
 import Table from "./Table";
 import StatsBar from "./StatsBar";
+import MyModal from "./MyModal";
 
 export default class App extends React.Component{
     state = {
-        posts: []
+        posts: [],
+        showLogin: false
     }
+
+    toggleModal = () => this.setState({
+        showLogin: !this.state.showLogin
+    })
 
     getCommentsNumber = () => this.state.posts.reduce((acc, post)=>post.comments.length+acc ,0)
 
@@ -30,6 +36,17 @@ export default class App extends React.Component{
   render() {
     return (
         <div className="container">
+            <button
+                className="btn btn-primary"
+                onClick={
+                    this.toggleModal
+                }
+            >Login
+            </button>
+            <MyModal
+                toggle = {this.toggleModal}
+                showModal={this.state.showLogin}
+            />
           <h1> Articles </h1>
           <Table posts={this.state.posts}/>
           <div className="card-group">

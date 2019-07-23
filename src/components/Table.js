@@ -7,6 +7,7 @@ export default class Table extends React.Component {
 
     render () {
     return(
+
         <table className="table table-striped">
             <thead className="thead-dark">
             <tr>
@@ -24,7 +25,7 @@ export default class Table extends React.Component {
                     <td>{post.comments.length}</td>
                     <td>
                         <h3>
-                            <a href="#" ><FontAwesomeIcon icon={faComment} /></a>
+                            <a href="#" ><FontAwesomeIcon icon={faComment} data-toggle="modal" data-target="#exampleModalCenter"/></a>
                             <span>  </span>
                             <a href="#" ><FontAwesomeIcon icon={faTimesCircle} /></a>
                         </h3>
@@ -33,6 +34,7 @@ export default class Table extends React.Component {
             )}
             </tbody>
         </table>
+
     );
     }
 }
